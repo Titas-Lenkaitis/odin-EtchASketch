@@ -1,16 +1,18 @@
 const grid = document.querySelector(".grid");
 const resolutionButton = document.querySelector(".resolutionButton");
+const rainbowButton = document.querySelector(".rainbowButton");
 let resolution = 16;
 let pixelCount = resolution * resolution;
 createGrid();
 
 resolutionButton.addEventListener("click", changeResolution);
+rainbowButton.addEventListener("click", toggleRainbowMode);
 
-function createListeners() {
+function createListeners(rgbValue1, rgbValue2, rgbValue3) {
   pixels = document.querySelectorAll(".grid div");
   pixels.forEach((div) => {
     div.addEventListener("mouseover", () => {
-      div.style.backgroundColor = "black";
+      div.style.backgroundColor = "rgb(" + rgbValue1 + "," + rgbValue2 + "," + rgbValue3 + ")";
     });
   });
   return pixels;
@@ -22,7 +24,7 @@ function createGrid() {
     div.setAttribute("style", `width: ${800 / resolution}px; height: ${800 / resolution}px;`)
     grid.appendChild(div);
   }
-  createListeners();
+  createListeners(0,0,0);
 };
 
 function removeGrid() {
@@ -42,3 +44,30 @@ function changeResolution() {
     createGrid();
   }
 };
+
+function toggleRainbowMode() {
+  pixels = document.querySelectorAll(".grid div");
+  pixels.forEach((div) => {
+    div.addEventListener("mouseover", () => {
+      div.style.backgroundColor = "rgb(" + randInt() + "," + randInt() + "," + randInt() + ")";
+    });
+  });
+  rainbowButton.addEventListener("click", toggleRainbowModeOff);
+}
+
+function removeListeners() {
+  pixels.forEach((div) => {
+    div.removeEventListener("mouseover", () => {
+      div.style.backgroundColor = "black";
+    });
+  });
+}
+
+function randInt() {
+  return Math.floor(Math.random() * 256);
+}
+
+function toggleRainbowModeOff() {
+  createListeners(0,0,0);
+  rainbowButton.addEventListener("click", toggleRainbowMode);
+}
