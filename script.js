@@ -52,6 +52,7 @@ function toggleRainbowMode() {
       div.style.backgroundColor = "rgb(" + randInt() + "," + randInt() + "," + randInt() + ")";
     });
   });
+  rainbowButton.removeEventListener("click", toggleRainbowMode);
   rainbowButton.addEventListener("click", toggleRainbowModeOff);
 }
 
@@ -69,5 +70,6 @@ function randInt() {
 
 function toggleRainbowModeOff() {
   createListeners(0,0,0);
+  rainbowButton.removeEventListener("click", toggleRainbowModeOff);
   rainbowButton.addEventListener("click", toggleRainbowMode);
 }
