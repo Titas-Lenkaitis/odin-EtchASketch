@@ -49,6 +49,8 @@ body {
   width: 800px;
   height: 800px;
   border: 6px solid #FB9902;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .container {
@@ -92,4 +94,12 @@ body {
 .button:active {
   background-color: #071147;
   transition-duration: 0ms;
+}
+
+.pixel {
+  background-color: white;
+}
+
+.pixelBorder {
+  border: 1px solid gray;
 }
