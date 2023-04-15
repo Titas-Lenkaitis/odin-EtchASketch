@@ -2,7 +2,6 @@ const grid = document.querySelector(".grid");
 const resolutionButton = document.querySelector(".resolutionButton");
 const rainbowButton = document.querySelector(".rainbowButton");
 let resolution = 16;
-let pixelCount = resolution * resolution;
 createGrid();
 
 resolutionButton.addEventListener("click", changeResolution);
@@ -11,14 +10,12 @@ rainbowButton.addEventListener("click", toggleRainbowMode);
 function createListeners(rgbValue1, rgbValue2, rgbValue3) {
   pixels = document.querySelectorAll(".grid div");
   pixels.forEach((div) => {
-    div.addEventListener("mouseover", () => {
-      div.style.backgroundColor = "rgb(" + rgbValue1 + "," + rgbValue2 + "," + rgbValue3 + ")";
+    div.addEventListener("mouseover", () => div.style.backgroundColor = "rgb(" + rgbValue1 + "," + rgbValue2 + "," + rgbValue3 + ")");
     });
-  });
   return pixels;
 };
 function createGrid() {
-  for (i = 0; i < pixelCount; i++) {
+  for (i = 0; i < (resolution * resolution); i++) {
     div = document.createElement("div");
     div.classList.add("pixel");
     div.setAttribute("style", `width: ${800 / resolution}px; height: ${800 / resolution}px;`)
@@ -28,9 +25,7 @@ function createGrid() {
 };
 
 function removeGrid() {
-  pixels.forEach((div) => {
-    grid.removeChild(div);
-  })
+  pixels.forEach((div) => grid.removeChild(div))
 };
 
 function changeResolution() {
@@ -40,7 +35,6 @@ function changeResolution() {
     return;
   } else {
     removeGrid();
-    pixelCount = resolution * resolution;
     createGrid();
   }
 };
