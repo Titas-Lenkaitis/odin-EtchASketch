@@ -55,15 +55,6 @@ function toggleRainbowMode() {
   rainbowButton.removeEventListener("click", toggleRainbowMode);
   rainbowButton.addEventListener("click", toggleRainbowModeOff);
 }
-
-function removeListeners() {
-  pixels.forEach((div) => {
-    div.removeEventListener("mouseover", () => {
-      div.style.backgroundColor = "black";
-    });
-  });
-}
-
 function randInt() {
   return Math.floor(Math.random() * 256);
 }
