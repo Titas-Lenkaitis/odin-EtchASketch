@@ -21,10 +21,11 @@ function createGrid() {
     div.setAttribute("style", `width: ${800 / resolution}px; height: ${800 / resolution}px;`)
     grid.appendChild(div);
   }
-  createListeners(0,0,0);
+  createListeners(0,0,0)
 };
 
 function removeGrid() {
+  pixels = document.querySelectorAll(".grid div");
   pixels.forEach((div) => grid.removeChild(div))
 };
 

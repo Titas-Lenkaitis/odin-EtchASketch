@@ -51,6 +51,7 @@ body {
   border: 6px solid #FB9902;
   display: flex;
   flex-wrap: wrap;
+  background-color: black;
 }
 
 .container {
