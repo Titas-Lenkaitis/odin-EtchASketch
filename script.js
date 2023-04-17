@@ -1,12 +1,13 @@
 const grid = document.querySelector(".grid");
 const resolutionButton = document.querySelector(".resolutionButton");
 const rainbowButton = document.querySelector(".rainbowButton");
-const shaderButton = document.querySelector(".shadeButton");
+const eraserButton = document.querySelector(".eraserButton");
 let resolution = 16;
 createGrid();
 
 resolutionButton.addEventListener("click", changeResolution);
 rainbowButton.addEventListener("click", toggleRainbowMode);
+eraserButton.addEventListener("click", toggleEraserMode);
 
 function createListeners(rgbValue1, rgbValue2, rgbValue3) {
   pixels = document.querySelectorAll(".grid div");
@@ -43,6 +44,7 @@ function changeResolution() {
 };
 
 function toggleRainbowMode() {
+  resetEraserButton();
   pixels = document.querySelectorAll(".grid div");
   pixels.forEach((div) => {
     div.addEventListener("mouseover", () => {
@@ -60,8 +62,33 @@ function randInt() {
 
 function toggleRainbowModeOff() {
   createListeners(0,0,0);
+  resetRainbowButton();
+}
+
+function toggleEraserMode() {
+  resetRainbowButton();
+  createListeners(255,255,255);
+  eraserButton.removeEventListener("click", toggleEraserMode);
+  eraserButton.addEventListener("click", toggleEraserModeOff);
+  eraserButton.classList.remove("button");
+  eraserButton.classList.add("active");
+}
+
+function toggleEraserModeOff() {
+  createListeners(0,0,0);
+  resetEraserButton();
+}
+
+function resetRainbowButton() {
+  rainbowButton.classList.remove("active");
+  rainbowButton.classList.add("button");
   rainbowButton.removeEventListener("click", toggleRainbowModeOff);
   rainbowButton.addEventListener("click", toggleRainbowMode);
-  rainbowButton.classList.remove("active");
-  rainbowButton.classList.add("button")
+}
+
+function resetEraserButton() {
+  eraserButton.classList.remove("active");
+  eraserButton.classList.add("button");
+  eraserButton.removeEventListener("click", toggleEraserModeOff);
+  eraserButton.addEventListener("click", toggleEraserMode);
 }
