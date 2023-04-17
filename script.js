@@ -1,6 +1,7 @@
 const grid = document.querySelector(".grid");
 const resolutionButton = document.querySelector(".resolutionButton");
 const rainbowButton = document.querySelector(".rainbowButton");
+const shaderButton = document.querySelector(".shadeButton");
 let resolution = 16;
 createGrid();
 
@@ -14,6 +15,17 @@ function createListeners(rgbValue1, rgbValue2, rgbValue3) {
     });
   return pixels;
 };
+
+function removeListeners() {
+  pixels = document.querySelectorAll(".grid div");
+  pixels.forEach((div) => {
+    div.removeEventListener("mouseover", () => div.style.backgroundColor = "rgb(" + 0 + "," + 0 + "," + 0 + ")");
+    div.removeEventListener("mouseover", () => {
+      div.style.backgroundColor = "rgb(" + randInt() + "," + randInt() + "," + randInt() + ")";
+    });
+    });
+}
+
 function createGrid() {
   for (i = 0; i < (resolution * resolution); i++) {
     div = document.createElement("div");
@@ -41,6 +53,7 @@ function changeResolution() {
 };
 
 function toggleRainbowMode() {
+  removeListeners();
   pixels = document.querySelectorAll(".grid div");
   pixels.forEach((div) => {
     div.addEventListener("mouseover", () => {
@@ -55,6 +68,7 @@ function randInt() {
 }
 
 function toggleRainbowModeOff() {
+  removeListeners();
   createListeners(0,0,0);
   rainbowButton.removeEventListener("click", toggleRainbowModeOff);
   rainbowButton.addEventListener("click", toggleRainbowMode);
