@@ -38,6 +38,8 @@ function changeResolution() {
     alert("Invalid number!");
     return;
   } else {
+    resetEraserButton();
+    resetRainbowButton();
     removeGrid();
     createGrid();
   }
