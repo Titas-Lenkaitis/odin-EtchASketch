@@ -40,7 +40,7 @@ function changeResolution() {
     alert("Invalid number!");
     return;
   } else {
-    resetGrid;
+    resetGrid();
   }
 };
 
