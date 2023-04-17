@@ -2,12 +2,14 @@ const grid = document.querySelector(".grid");
 const resolutionButton = document.querySelector(".resolutionButton");
 const rainbowButton = document.querySelector(".rainbowButton");
 const eraserButton = document.querySelector(".eraserButton");
+const clearButton = document.querySelector(".clearButton");
 let resolution = 16;
 createGrid();
 
 resolutionButton.addEventListener("click", changeResolution);
 rainbowButton.addEventListener("click", toggleRainbowMode);
 eraserButton.addEventListener("click", toggleEraserMode);
+clearButton.addEventListener("click", resetGrid);
 
 function createListeners(rgbValue1, rgbValue2, rgbValue3) {
   pixels = document.querySelectorAll(".grid div");
@@ -38,10 +40,7 @@ function changeResolution() {
     alert("Invalid number!");
     return;
   } else {
-    resetEraserButton();
-    resetRainbowButton();
-    removeGrid();
-    createGrid();
+    resetGrid;
   }
 };
 
@@ -93,4 +92,11 @@ function resetEraserButton() {
   eraserButton.classList.add("button");
   eraserButton.removeEventListener("click", toggleEraserModeOff);
   eraserButton.addEventListener("click", toggleEraserMode);
+}
+
+function resetGrid() {
+  resetEraserButton();
+  resetRainbowButton();
+  removeGrid();
+  createGrid();
 }
