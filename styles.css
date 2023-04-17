@@ -97,6 +97,26 @@ body {
   transition-duration: 0ms;
 }
 
+.active {
+  color: #152783;
+  padding: 18px 24px;
+  font-size: 22px;
+  font-weight: bold;
+  background-color: #FB9902;
+  border: 0px solid #0b1a66;
+  border-radius: 36px;
+  transition-duration: 0.2s;
+}
+
+.active:hover {
+  background-color: #fda829;
+}
+
+.active:active {
+  background-color: #a16100;
+  transition-duration: 0ms;
+}
+
 .pixel {
   background-color: white;
 }

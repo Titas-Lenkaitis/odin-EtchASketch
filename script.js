@@ -62,6 +62,8 @@ function toggleRainbowMode() {
   });
   rainbowButton.removeEventListener("click", toggleRainbowMode);
   rainbowButton.addEventListener("click", toggleRainbowModeOff);
+  rainbowButton.classList.remove("button");
+  rainbowButton.classList.add("active");
 }
 function randInt() {
   return Math.floor(Math.random() * 256);
@@ -72,4 +74,6 @@ function toggleRainbowModeOff() {
   createListeners(0,0,0);
   rainbowButton.removeEventListener("click", toggleRainbowModeOff);
   rainbowButton.addEventListener("click", toggleRainbowMode);
+  rainbowButton.classList.remove("active");
+  rainbowButton.classList.add("button");
 }
