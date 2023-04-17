@@ -57,6 +57,7 @@ body {
 .container {
   display: flex;
   gap: 40px;
+  margin: 64px 0px;
 }
 
 .buttons {
