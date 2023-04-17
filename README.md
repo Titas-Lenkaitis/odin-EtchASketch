@@ -11,3 +11,6 @@ Use the "Change Resolution" button to change the resolution of the grid, up to 1
 There are toggles for "Rainbow mode" and "Eraser mode".
 
 Rainbow mode just sets the colour to be random each time, and the eraser sets the colour to be white, acting like an eraser would.
+
+
+Link to the live code: https://titas-lenkaitis.github.io/odin-EtchASketch/
