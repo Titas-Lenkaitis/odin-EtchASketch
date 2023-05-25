@@ -35,10 +35,12 @@ function removeGrid() {
 };
 
 function changeResolution() {
+  temp = resolution;
   resolution = prompt("How many squares do you want per side?");
   if (resolution > 100 || resolution < 1) {
+    resolution = temp;
     alert("Invalid number!");
-    return;
+    return resolution;
   } else {
     resetGrid();
   }
